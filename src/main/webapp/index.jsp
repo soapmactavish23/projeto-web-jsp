@@ -8,17 +8,16 @@
 </head>
 <body>
 <div class="container">
-    <form>
+    <form method="post" action="index.jsp">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <label for="txtnome" class="form-label">Nome</label>
+            <input class="form-control" id="txtnome" name="txtnome">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
-    <p class="text-success">
+    <p class="text-muted mt-4">
         <%
-            String nome = "Henrick Nogueira";
+            String nome = request.getParameter("txtnome");
             int idade = 25;
 
             out.print(nome);
