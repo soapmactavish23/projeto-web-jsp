@@ -50,8 +50,10 @@
             if(usuario.equals("") || senha.equals("")) {
                 out.print("Preencha os Dados");
             } else {
-                if(usuario.equals("Henrick") && senha == "123") {
-                    out.print("Logado");
+                if(usuario.equals("Henrick") && senha.equals("123")) {
+                    response.sendRedirect("usuarios.jsp");
+                } else {
+                    out.print("Dados incorretos");
                 }
             }
         %>
