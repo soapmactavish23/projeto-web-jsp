@@ -23,8 +23,8 @@
                             <input type="text" name="txtusuario" id="txtusuario" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="senha" class="text-info">Senha:</label><br>
-                            <input type="password" name="senha" id="senha" class="form-control">
+                            <label for="txtsenha" class="text-info">Senha:</label><br>
+                            <input type="password" name="txtsenha" id="txtsenha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="remember-me" class="text-info"><span>Lembrar-me</span> <span><input
@@ -42,8 +42,18 @@
     <p align="center" class="text-light mt-2">
         <%
             String usuario = request.getParameter("txtusuario");
+            String senha = request.getParameter("txtsenha");
+
             usuario = usuario == null ? "" : usuario;
-            out.print(usuario);
+            senha = senha == null ? "" : senha;
+
+            if(usuario.equals("") || senha.equals("")) {
+                out.print("Preencha os Dados");
+            } else {
+                if(usuario.equals("Henrick") && senha == "123") {
+                    out.print("Logado");
+                }
+            }
         %>
     </p>
 </div>
