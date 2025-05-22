@@ -1,4 +1,15 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.DriverManager" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,6 +57,18 @@
 
             usuario = usuario == null ? "" : usuario;
             senha = senha == null ? "" : senha;
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/javaweb?user=root&password12356");
+                st = con.createStatement();
+                rs = st.executeQuery("SELECT * FROM usuarios");
+
+                while(rs.next()) {
+                    out.print(rs.getString(2));
+                }
+            } catch (Exception e) {
+                out.print(e.toString());
+            }
 
             if(usuario.equals("") || senha.equals("")) {
                 out.print("Preencha os Dados");
